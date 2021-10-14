@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
 import './App.css'
-import Button from '@mui/material/Button'
 import { Checkbox } from '@mui/material'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
@@ -79,39 +78,6 @@ export default function App() {
      
 
 
-    </div>
-//     <div>
-//       <form className="neon_border">
-
-
-// <p className="form-title">Перезвоним вам</p>
-// <div className="form-item">
-//   <textarea name="" id="form-text" placeholder="В свободном формате"></textarea>
-//   <label htmlFor="form-text">text</label>
-// </div>
-// <div className="form-item">
-//   <input type="text" id="person-name" placeholder="Иван Петров"/>
-//   <label htmlFor="person-name">имя</label>
-// </div>
-// <div className="form-item">
-//   <input type="text" id="person-phone" placeholder="+7 999 9999999"/>
-//   <label htmlFor="person-phone">телефон</label>
-// </div>
-
-
-
-// <button type="submit">Заказать звонок</button>
-
-
-// </form>
-
-// <div className="form-item">
-//   <input type="text" id="person-phone"/>
-//   <label htmlFor="person-phone">телефон</label>
-// </div>
-
-
-//     </div>
-    
+    </div> 
   )
 }
