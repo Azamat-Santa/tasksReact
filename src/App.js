@@ -1,25 +1,117 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { useState } from 'react'
+import './App.css'
+import Button from '@mui/material/Button'
+import { Checkbox } from '@mui/material'
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-function App() {
+
+export default function App() {
+  const [todo, setTodo] = useState([])
+  const [valueInput, setValueInput] = useState('')
+
+
+  const addTodo = (e) => {
+    e.preventDefault()
+
+    const addedTodo = {
+      id: Date.now(),
+      valueInput,
+      passed: false
+    }
+    if(addedTodo.valueInput===''){
+      return null 
+    }else{
+      setTodo([...todo, addedTodo])
+      setValueInput('')
+    }
+    
+   
+  
+  }
+  
+
+  const removeTodo = (idTodo) => {
+    setTodo(todo.filter(todoObj => todoObj.id !== idTodo))
+  }
+  const checkedTodo=(index)=>{
+    const newTodo=[...todo]
+    if(newTodo[index].passed===true){
+      newTodo[index].passed=false
+    }else if(newTodo[index].passed===false){
+      newTodo[index].passed=true
+    }
+    setTodo(newTodo)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div className='wrapperTodo'>
+      <div className="todoContent">
+        <form action="">
+        <div className='inputLabel'>
+          <input type="text"
+            value={valueInput}
+            onChange={(e) => setValueInput(e.target.value)}
+            id='input'
+            className='vvodTodo'
+          />
+        <label htmlFor="input">Что нужно сделать?</label>
+        <button onClick={addTodo} className='btn'>+</button>
 
-export default App;
+        </div>
+           
+        </form>
+        {
+          todo ? todo.map((todoItem,index) => {
+            return (
+              <div key={todoItem.id}  className='todoArr' >
+              <Checkbox onClick={()=>checkedTodo(index)}/>
+                
+                <div className={todo[index].passed===true?'todoValue todoValueChecked':'todoValue'}>{todoItem.valueInput}</div>
+              
+                <DeleteOutlineIcon style={{cursor:'pointer',}}  onClick={() => removeTodo(todoItem.id)} />
+              </div>
+            )
+
+          }) : <> emprty</>
+        }
+      </div>
+     
+
+
+    </div>
+//     <div>
+//       <form className="neon_border">
+
+
+// <p className="form-title">Перезвоним вам</p>
+// <div className="form-item">
+//   <textarea name="" id="form-text" placeholder="В свободном формате"></textarea>
+//   <label htmlFor="form-text">text</label>
+// </div>
+// <div className="form-item">
+//   <input type="text" id="person-name" placeholder="Иван Петров"/>
+//   <label htmlFor="person-name">имя</label>
+// </div>
+// <div className="form-item">
+//   <input type="text" id="person-phone" placeholder="+7 999 9999999"/>
+//   <label htmlFor="person-phone">телефон</label>
+// </div>
+
+
+
+// <button type="submit">Заказать звонок</button>
+
+
+// </form>
+
+// <div className="form-item">
+//   <input type="text" id="person-phone"/>
+//   <label htmlFor="person-phone">телефон</label>
+// </div>
+
+
+//     </div>
+    
+  )
+}

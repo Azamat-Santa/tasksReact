@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body{
+  background: #000;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+}
+.vvodTodo{
+  outline: none;
+  width: 200px;
+  box-sizing: border-box;
+  border:none;
+  border-bottom:1px solid rgb(245, 242, 245);
+  background: transparent;
+  color: rgb(250, 249, 249);
+  padding: 5px;
+  font-size: 15px;
+  
+}
+
+
+.btn{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgb(248, 183, 2);
+  color:white;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:none;
+  outline: none;
+cursor: pointer;
+}
+form{
+  width: 300px;
+
+}
+label{
+  position: absolute;
+  left: 10px;
+  top: 43px;
+  transition: top 0.5s;
   color: white;
+
+}
+.vvodTodo:focus{
+  transition-duration: 0.3s;
+
+}
+.vvodTodo:focus+label{
+  top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .inputLabel{
+    position: relative;
+    padding-top: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    transition: .9s;
+  }
+
+  .todoArr{
+    display: flex;
+    width: 300px;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background: rgb(4, 175, 197);
+    margin: 7px;
+    margin-top: 20px;
+    margin-left: 0px;
+    border-radius: 10px;
+    transition: .4s;
+   
+  
+  }
+  .todoCheckbox,
+  .todoValue{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .todoValue{
+    width: 80%;
+    
+    overflow: hidden;
+  }
+
+.todoValueChecked{
+  text-decoration: line-through  ;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
+
