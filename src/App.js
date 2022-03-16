@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import './App.css'
 import { Checkbox } from '@mui/material'
@@ -6,10 +6,23 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 
 export default function App() {
-  const [todo, setTodo] = useState([])
   const [valueInput, setValueInput] = useState('')
 
+  const [todo, setTodo] = useState(() => {
+    const savedTodos = localStorage.getItem("todos");
+    if (savedTodos) {
+      return JSON.parse(savedTodos);
+    }else {
+      return [];
+    }});
 
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todo))
+ 
+  }, [todo])
+
+
+  
   const addTodo = (e) => {
     e.preventDefault()
 
@@ -25,8 +38,6 @@ export default function App() {
       setValueInput('')
     }
     
-   
-  
   }
   
 
@@ -44,15 +55,15 @@ export default function App() {
   }
   
   return (
-    <div className='wrapperTodo'>
-      <div className="todoContent">
+    <div className='wrapper-todo'>
+      <div className="todo-content">
         <form action="">
-        <div className='inputLabel'>
+        <div className='input-label'>
           <input type="text"
             value={valueInput}
             onChange={(e) => setValueInput(e.target.value)}
             id='input'
-            className='vvodTodo'
+            className='todo__input'
           />
         <label htmlFor="input">Что нужно сделать?</label>
         <button onClick={addTodo} className='btn'>+</button>
@@ -63,15 +74,12 @@ export default function App() {
         {
           todo ? todo.map((todoItem,index) => {
             return (
-              <div key={todoItem.id}  className='todoArr' >
+              <div key={todoItem.id}  className='todo__output' >
               <Checkbox onClick={()=>checkedTodo(index)}/>
-                
-                <div className={todo[index].passed===true?'todoValue todoValueChecked':'todoValue'}>{todoItem.valueInput}</div>
-              
+                <div className={todo[index].passed===true?'todo__value todo__value_hecked':'todo__value'}>{todoItem.valueInput}</div>
                 <DeleteOutlineIcon style={{cursor:'pointer',}}  onClick={() => removeTodo(todoItem.id)} />
               </div>
             )
-
           }) : <> Пусто</>
         }
       </div>

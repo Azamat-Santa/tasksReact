@@ -5,7 +5,7 @@ body{
   justify-content: center;
 
 }
-.vvodTodo{
+.todo__input{
   outline: none;
   width: 200px;
   box-sizing: border-box;
@@ -45,11 +45,11 @@ label{
   color: white;
 
 }
-.vvodTodo:focus{
+.todo__input:focus{
   transition-duration: 0.3s;
 
 }
-.vvodTodo:focus+label{
+.todo__input:focus+label{
   top: 10px;
 }
 
@@ -58,7 +58,7 @@ label{
     box-sizing: border-box;
   }
 
-  .inputLabel{
+  .input-label{
     position: relative;
     padding-top: 40px;
     margin-bottom: 10px;
@@ -66,7 +66,7 @@ label{
     transition: .9s;
   }
 
-  .todoArr{
+  .todo__output{
     display: flex;
     width: 300px;
     padding: 4px;
@@ -83,19 +83,19 @@ label{
   
   }
   .todoCheckbox,
-  .todoValue{
+  .todo__value{
     width: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .todoValue{
+  .todo__value{
     width: 80%;
     
     overflow: hidden;
   }
 
-.todoValueChecked{
+.todo__value_hecked{
   text-decoration: line-through  ;
 }
 
